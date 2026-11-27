@@ -8,7 +8,7 @@
   --ease:cubic-bezier(.2,.8,.2,1);
   --cut:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));
   --cut-s:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
-  --measure:720px;
+  --measure:720px; --page:1120px; --gutter:clamp(18px,5vw,56px);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:76px}
@@ -30,8 +30,9 @@ img,video{max-width:100%;height:auto}
 .topbar,main,.foot{position:relative;z-index:1}
 
 /* ---------- top bar ---------- */
-.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:20px;padding:10px clamp(16px,4vw,40px);
+.topbar{position:sticky;top:0;z-index:10;padding:10px var(--gutter);
   padding-top:max(10px,env(safe-area-inset-top));background:#07060fd9;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:var(--page);margin:0 auto;display:flex;align-items:center;gap:20px}
 .topbar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--cyan),var(--pink),var(--yellow));opacity:.55}
 .brand{font:500 .95rem var(--mono);color:var(--text);text-decoration:none;letter-spacing:.02em;white-space:nowrap}
 .brand b{color:var(--cyan);font-weight:500}
@@ -48,7 +49,8 @@ img,video{max-width:100%;height:auto}
 .icons a:hover,.icons a:focus-visible{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 12px #19f0ff66;transform:translateY(-2px)}
 .icons svg{width:18px;height:18px;fill:currentColor}
 
-main{flex:1;width:100%;max-width:calc(var(--measure) + 2 * clamp(18px,5vw,56px));margin:0 auto;padding:clamp(40px,8vh,80px) clamp(18px,5vw,56px) 72px}
+main{flex:1;width:100%;max-width:calc(var(--page) + 2 * var(--gutter));margin:0 auto;padding:clamp(40px,8vh,80px) var(--gutter) 72px}
+.post{max-width:var(--measure);margin:0 auto}
 
 /* ---------- glitch titles (same effect as the portfolio hero) ---------- */
 .glitch{position:relative}
@@ -59,9 +61,13 @@ main{flex:1;width:100%;max-width:calc(var(--measure) + 2 * clamp(18px,5vw,56px))
 
 /* ---------- home ---------- */
 .eyebrow{font:500 .9rem var(--mono);color:var(--cyan);margin:0 0 14px;letter-spacing:.04em}
-.intro h1{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:700;text-shadow:0 0 28px #ff2bd655}
-.pitch{font:500 clamp(1.1rem,2.4vw,1.35rem)/1.4 var(--head);color:var(--muted);margin:16px 0 0;max-width:40ch}
-.posts{display:grid;gap:18px;margin-top:48px}
+.intro h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:700;text-shadow:0 0 28px #ff2bd655}
+.intro{display:flex;align-items:center;justify-content:center;gap:clamp(18px,3vw,30px)}
+.intro h1{display:inline-block}
+.avatar{flex:none;width:clamp(84px,11vw,120px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;border:2px solid var(--cyan);box-shadow:0 0 22px #19f0ff55}
+.pitch{font:500 clamp(.95rem,2vw,1.05rem)/1.4 var(--mono);color:var(--muted);margin:10px 0 0;letter-spacing:.04em}
+.posts{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:48px}
+.posts .post-card{flex:0 1 360px}
 .post-card{position:relative;display:block;color:var(--text);text-decoration:none;background:var(--glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   border:1px solid var(--line);border-top:2px solid #19f0ff99;clip-path:var(--cut);padding:22px 24px;transition:border-color .25s,box-shadow .25s,transform .25s var(--ease)}
 .post-card:hover,.post-card:focus-visible{border-color:#19f0ff88;box-shadow:0 10px 30px -12px #19f0ff66;transform:translateY(-2px)}
@@ -120,11 +126,13 @@ pre code{font-size:inherit}
 .lost p{color:var(--muted)}
 
 /* ---------- footer ---------- */
-.foot{width:100%;max-width:calc(var(--measure) + 2 * clamp(18px,5vw,56px));margin:0 auto;padding:28px clamp(18px,5vw,56px) 34px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.92rem;border-top:1px solid var(--line)}
+.foot{width:100%;max-width:calc(var(--page) + 2 * var(--gutter));margin:0 auto;padding:28px var(--gutter) 34px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.92rem}
+.foot::before{content:"";position:absolute;top:0;left:var(--gutter);right:var(--gutter);height:1px;background:var(--line)}
 .foot a{color:var(--muted)}
 .foot a:hover{color:var(--cyan)}
 
 @media (max-width:640px){
+  .intro{flex-direction:column;text-align:center}
   .sections{display:none}
   .icons{margin-left:auto}
   .brand{font-size:.88rem}
