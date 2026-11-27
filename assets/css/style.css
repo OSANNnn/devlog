@@ -53,8 +53,9 @@ main{flex:1;width:100%;max-width:calc(var(--page) + 2 * var(--gutter));margin:0 
 .post{max-width:var(--measure);margin:0 auto}
 
 /* ---------- glitch titles (same effect as the portfolio hero) ---------- */
-.glitch{position:relative}
-.glitch::before,.glitch::after{content:attr(data-t);position:absolute;inset:0;pointer-events:none}
+.glitch{position:relative;display:inline-block}
+.paren{font-family:var(--mono);font-weight:700;margin-left:-.1em;letter-spacing:-.06em}
+.glitch::before,.glitch::after{content:attr(data-t);content:attr(data-t) / "";position:absolute;inset:0;pointer-events:none}
 .glitch::before{color:var(--cyan);mix-blend-mode:screen;clip-path:inset(0 0 55% 0);animation:glitch 7s infinite steps(1)}
 .glitch::after{color:var(--pink);mix-blend-mode:screen;clip-path:inset(60% 0 0 0);animation:glitch 7s infinite steps(1) reverse}
 @keyframes glitch{0%,93%,100%{transform:translate(0)}94%{transform:translate(6px,-2px)}96%{transform:translate(-5px,2px)}98%{transform:translate(3px,0)}}
@@ -66,8 +67,16 @@ main{flex:1;width:100%;max-width:calc(var(--page) + 2 * var(--gutter));margin:0 
 .intro h1{display:inline-block}
 .avatar{flex:none;width:clamp(84px,11vw,120px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;border:2px solid var(--cyan);box-shadow:0 0 22px #19f0ff55}
 .pitch{font:500 clamp(.95rem,2vw,1.05rem)/1.4 var(--mono);color:var(--muted);margin:10px 0 0;letter-spacing:.04em}
-.posts{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:48px}
-.posts .post-card{flex:0 1 360px}
+.posts{max-width:var(--measure);margin:56px auto 0}
+.list-title{font:500 .85rem var(--mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.post-row{position:relative;display:block;padding:22px 20px 22px 22px;border-bottom:1px solid var(--line);color:var(--text);text-decoration:none;
+  background:linear-gradient(90deg,#19f0ff0d,transparent 70%) no-repeat;background-size:0 100%;transition:background-size .35s var(--ease)}
+.post-row::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:2px;background:var(--pink);box-shadow:0 0 10px var(--pink);transform:scaleY(0);transition:transform .3s var(--ease)}
+.post-row:hover,.post-row:focus-visible{background-size:100% 100%}
+.post-row:hover::before,.post-row:focus-visible::before{transform:scaleY(1)}
+.post-row h3{font-size:1.45rem;transition:color .2s}
+.post-row:hover h3{color:var(--cyan)}
+.row-desc{margin:6px 0 0;color:var(--muted);font-size:1rem}
 .post-card{position:relative;display:block;color:var(--text);text-decoration:none;background:var(--glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   border:1px solid var(--line);border-top:2px solid #19f0ff99;clip-path:var(--cut);padding:22px 24px;transition:border-color .25s,box-shadow .25s,transform .25s var(--ease)}
 .post-card:hover,.post-card:focus-visible{border-color:#19f0ff88;box-shadow:0 10px 30px -12px #19f0ff66;transform:translateY(-2px)}
@@ -140,3 +149,10 @@ pre code{font-size:inherit}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* embeds (Shadertoy, video) */
+.embed{position:relative;aspect-ratio:16/9;margin:0 0 1.6em;border:1px solid #19f0ffaa;box-shadow:0 0 28px #19f0ff2a;background:#05040c}
+.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.embed{margin-bottom:.6em}
+.prose .embed-link{margin:0 0 2em;font:500 .85rem var(--mono)}
+.prose .embed-link a{text-decoration:none}

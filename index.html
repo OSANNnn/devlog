@@ -2,25 +2,25 @@
 layout: default
 ---
 <section class="intro">
-  <img class="avatar" src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="OSANNnn" width="120" height="120">
+  <img class="avatar" src="https://github.com/OSANNnn.png?size=240" alt="OSANNnn" width="120" height="120">
   <div>
-    <h1 class="glitch" data-t="Next Frame">Next Frame</h1>
+    <h1><span class="glitch" data-t="Frame.Next">Frame.Next</span><span class="glitch paren" data-t="()">()</span></h1>
     <p class="pitch">a game/graphics programming blog</p>
   </div>
 </section>
 
 <section class="posts" aria-label="Posts">
+  <h2 class="list-title">Latest posts</h2>
   {%- for post in site.posts %}
-  <a class="post-card" href="{{ post.url | relative_url }}">
+  <a class="post-row" href="{{ post.url | relative_url }}">
     <p class="card-meta">
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %b %Y' }}</time>
       {%- if post.kicker %} · {{ post.kicker }}{% endif %}
     </p>
-    <h2>{{ post.title }}</h2>
+    <h3>{{ post.title }}</h3>
     {%- if post.description %}
-    <p>{{ post.description }}</p>
+    <p class="row-desc">{{ post.description }}</p>
     {%- endif %}
-    <span class="more">Read →</span>
   </a>
   {%- endfor %}
 </section>
