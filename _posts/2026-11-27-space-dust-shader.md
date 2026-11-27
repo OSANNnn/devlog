@@ -7,7 +7,7 @@ description: "Dust particles drifting toward the camera in a single fragment sha
 ---
 
 <div class="embed">
-  <iframe src="https://www.shadertoy.com/embed/fcscDs?gui=true&t=10&paused=true&muted=false" title="Space Dust on Shadertoy" allowfullscreen loading="lazy"></iframe>
+  <iframe src="https://www.shadertoy.com/embed/fcscDs?gui=true&t=10&paused=false&muted=false" title="Space Dust on Shadertoy" allowfullscreen loading="lazy"></iframe>
 </div>
 
 <p class="embed-link"><a href="https://www.shadertoy.com/view/fcscDs">View the full shader and code on Shadertoy ↗</a></p>

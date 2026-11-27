@@ -65,6 +65,8 @@ main{flex:1;width:100%;max-width:calc(var(--page) + 2 * var(--gutter));margin:0 
 .intro h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:700;text-shadow:0 0 28px #ff2bd655}
 .intro{display:flex;align-items:center;justify-content:center;gap:clamp(18px,3vw,30px)}
 .intro h1{display:inline-block}
+/* optical centering: the round photo weighs less than the bold title, so shift the group left a little */
+@media (min-width:641px){.intro{transform:translateX(-24px)}}
 .avatar{flex:none;width:clamp(84px,11vw,120px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;border:2px solid var(--cyan);box-shadow:0 0 22px #19f0ff55}
 .pitch{font:500 clamp(.95rem,2vw,1.05rem)/1.4 var(--mono);color:var(--muted);margin:10px 0 0;letter-spacing:.04em}
 .posts{max-width:var(--measure);margin:56px auto 0}
