@@ -1,0 +1,28 @@
+title: OSANNnn / devlog
+description: Graphics programming devlog by OSANNnn. Building renderers from the ground up, one milestone at a time.
+author: OSANNnn
+lang: en
+
+url: "https://osannnn.github.io"
+baseurl: "/devlog"
+
+links:
+  portfolio: "https://osannnn.github.io/"
+  github: "https://github.com/OSANNnn"
+  gfx_lab: "https://github.com/OSANNnn/gfx-lab"
+
+permalink: /:year/:month/:day/:title/
+timezone: Europe/Rome
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - LICENSE

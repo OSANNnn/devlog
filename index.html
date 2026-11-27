@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<section class="intro">
+  <p class="eyebrow">// devlog</p>
+  <h1 class="glitch" data-t="Graphics programming devlog">Graphics programming devlog</h1>
+  <p class="pitch">Building renderers from the ground up, one milestone at a time.</p>
+</section>
+
+<section class="posts" aria-label="Posts">
+  {%- for post in site.posts %}
+  <a class="post-card" href="{{ post.url | relative_url }}">
+    <p class="card-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %b %Y' }}</time>
+      {%- if post.kicker %} · {{ post.kicker }}{% endif %}
+    </p>
+    <h2>{{ post.title }}</h2>
+    {%- if post.description %}
+    <p>{{ post.description }}</p>
+    {%- endif %}
+    <span class="more">Read →</span>
+  </a>
+  {%- endfor %}
+</section>

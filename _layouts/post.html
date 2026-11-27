@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-head">
+    {%- if page.kicker %}
+    <p class="kicker">{{ page.kicker }}</p>
+    {%- endif %}
+    <h1 class="glitch" data-t="{{ page.title | escape }}">{{ page.title }}</h1>
+    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %b %Y' }}</time></p>
+  </header>
+
+  <div class="prose">
+{{ content }}
+  </div>
+
+  <nav class="post-foot" aria-label="More">
+    <a href="{{ '/' | relative_url }}">← All posts</a>
+  </nav>
+</article>
